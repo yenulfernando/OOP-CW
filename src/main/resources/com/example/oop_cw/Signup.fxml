@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600" prefWidth="800" stylesheets="@css/Signup.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_cw.SignupController">
+    <HBox spacing="0">
+        <!-- Left Side: Logo and Information -->
+        <VBox fx:id="leftPane" alignment="CENTER" prefWidth="300" spacing="20" styleClass="left-pane">
+            <Text fx:id="title" fontSmoothingType="LCD" styleClass="title-text" text="JOIN WITH ECHOFEED">
+            <fill>
+               <LinearGradient endX="0.39772725105285645" endY="0.7083333586201525" startX="0.4053029652797815" startY="0.22727272727272727">
+                  <stops>
+                     <Stop>
+                        <color>
+                           <Color />
+                        </color>
+                     </Stop>
+                     <Stop offset="1.0">
+                        <color>
+                           <Color red="1.0" green="1.0" blue="1.0" />
+                        </color>
+                     </Stop>
+                  </stops>
+               </LinearGradient>
+            </fill></Text>
+            <ImageView fx:id="logoImage" fitHeight="100" fitWidth="100">
+                <image>
+                    <Image url="@download.png" />
+                </image>
+            </ImageView>
+            <Text fx:id="slogan" styleClass="slogan-text" text="Stay Informed. Stay Inspired." />
+            <VBox alignment="CENTER" spacing="10" styleClass="features-list">
+                <Text styleClass="feature-item" text="• Follow Topics" wrappingWidth="109.55938744544983" />
+                <Text styleClass="feature-item" text="• Curate Stories" wrappingWidth="109.609375" />
+                <Text styleClass="feature-item" text="• Share Ideas" wrappingWidth="110.26724210381508" />
+            </VBox>
+        </VBox>
+
+        <!-- Right Side: Signup Form -->
+        <VBox fx:id="rightPane" alignment="CENTER" prefHeight="670.0" prefWidth="500" spacing="15" styleClass="right-pane">
+            <!-- Full Name Field -->
+            <TextField fx:id="nameField" promptText="Full Name" styleClass="input-field" />
+
+            <!-- New Username Field -->
+            <TextField fx:id="usernameField" promptText="Username" styleClass="input-field" />
+
+            <!-- Email Field -->
+            <TextField fx:id="emailField" promptText="Email" styleClass="input-field" />
+
+            <!-- Password Field -->
+            <PasswordField fx:id="passwordField" prefHeight="34.0" prefWidth="391.0" promptText="Password" styleClass="input-field" />
+
+            <!-- Preference Section -->
+            <VBox fx:id="preferenceBox" alignment="CENTER_LEFT" spacing="5">
+                <Label styleClass="label-text" text="What do you prefer?" />
+                <ChoiceBox fx:id="preferenceChoiceBox" prefWidth="462.0" styleClass="choice-box">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Technology" />
+                            <String fx:value="Health" />
+                            <String fx:value="Sports" />
+                            <String fx:value="AI" />
+                            <String fx:value="Politics" />
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+            </VBox>
+
+            <Button fx:id="continueButton" minHeight="-Infinity" minWidth="-Infinity" onAction="#OnContinueClick" prefHeight="46.0" prefWidth="353.0" styleClass="continue-button" text="Continue" />
+            <Text styleClass="or-text" text="or sign up with" />
+            <HBox alignment="CENTER" spacing="10">
+                <ImageView fx:id="appleIcon" fitHeight="30" fitWidth="30" styleClass="icon">
+                    <image>
+                        <Image url="@apple.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="googleIcon" fitHeight="30" fitWidth="30" styleClass="icon">
+                    <image>
+                        <Image url="@google.png" />
+                    </image>
+                </ImageView>
+            </HBox>
+            <Hyperlink styleClass="hyperlink" text="Get started as a publisher" />
+         <Button mnemonicParsing="false" onAction="#onBackbuttonclick" prefHeight="29.0" prefWidth="51.0" style="-fx-background-color: #2980b9;" text="Back" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Button>
+            <Text styleClass="account-text" text="Already have an account?" />
+            <Hyperlink styleClass="hyperlink" text="Log In" />
+            <Text styleClass="terms-text" text="By continuing, you accept the Terms of Use and Privacy Policy." />
+        </VBox>
+    </HBox>
+</AnchorPane>

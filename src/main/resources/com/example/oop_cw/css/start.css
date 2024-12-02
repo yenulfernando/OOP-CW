@@ -1,0 +1,79 @@
+/* Root Style */
+AnchorPane {
+    -fx-background-image: url("markus.jpg"); /* Replace with your background image path */
+    -fx-background-size: cover;
+    -fx-padding: 20;
+    -fx-font-family: "Arial", sans-serif;
+}
+
+/* Overlay behind text to enhance readability */
+#overlay {
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay */
+    -fx-padding: 15;
+    -fx-background-radius: 10;
+    -fx-layout-x: 50;
+    -fx-layout-y: 20;
+    -fx-pref-width: 563;
+    -fx-pref-height: 100;
+}
+
+/* Title Style */
+#title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-fill: #ffffff; /* White text for better contrast */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 6, 0.4, 0, 2);
+    -fx-text-alignment: center;
+}
+
+/* Slogan Style */
+#slogan {
+    -fx-font-size: 18px;
+    -fx-fill: #f1f1f1; /* Slightly lighter shade for differentiation */
+    -fx-font-style: italic;
+    -fx-text-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 4, 0.3, 0, 2);
+}
+
+/* Button Styles */
+Button {
+    -fx-background-color: #3376b5;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-border-width: 2;
+    -fx-border-color: #2c3e50;
+    -fx-pref-width: 200;
+    -fx-pref-height: 50;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0.4, 0, 3);
+    -fx-transition: all 0.3s ease;
+}
+
+Button:hover {
+    -fx-background-color: #2980b9;
+}
+
+Button:pressed {
+    -fx-background-color: #1c5980;
+}
+
+/* Icon Image Style */
+ImageView {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.15), 4, 0, 0, 3);
+}
+
+#icon {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0.4, 0, 4);
+}
+
+#signup, #login {
+    -fx-opacity: 0.85;
+}
+
+#signup:hover, #login:hover {
+    -fx-opacity: 1.0;
+    -fx-cursor: hand;
+}

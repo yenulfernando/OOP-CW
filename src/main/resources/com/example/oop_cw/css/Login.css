@@ -1,0 +1,121 @@
+/* Root Style */
+AnchorPane {
+    -fx-background-color: #f4f7fb; /* Light gray background */
+}
+
+/* Left Pane Styling */
+.left-pane {
+    -fx-background-color: transparent; /* Transparent for background image */
+    -fx-padding: 30 20;
+    -fx-alignment: center;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0.5, 0, 0);
+
+    /* Background Image */
+    -fx-background-image: url("fotios1438190.jpg"); /* Path to the background image */
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+
+    /* Soft Dark Overlay */
+    -fx-background-color: rgba(0, 0, 0, 0.4); /* Increased opacity for better text contrast */
+    -fx-background-blend-mode: overlay;
+}
+
+.title-text {
+    -fx-font-size: 32px; /* Slightly larger but professional size */
+    -fx-font-family: "Helvetica", sans-serif; /* Professional font family */
+    -fx-font-weight: bold;
+    -fx-fill: #ffffff; /* White text for contrast against dark background */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 4, 1, 0, 1); /* Soft, subtle shadow */
+    -fx-text-alignment: center;
+    -fx-padding: 0 0 20 0; /* Padding for spacing */
+    -fx-letter-spacing: 1px; /* Small letter spacing for improved legibility */
+    -fx-line-spacing: 2px; /* Line spacing for readability */
+}
+
+.slogan-text {
+    -fx-font-size: 18px;
+    -fx-fill: #ffffff; /* Lighter text for better visibility */
+    -fx-padding: 0 0 20 0;
+}
+
+/* Right Pane Styling */
+.right-pane {
+    -fx-padding: 40 30;
+    -fx-background-color: #ffffff; /* White background for form */
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0.5, 0, 0);
+}
+
+.input-field {
+    -fx-pref-width: 400;
+    -fx-pref-height: 40;
+    -fx-background-color: #ffffff; /* White background for input fields */
+    -fx-border-color: #ccd0d5; /* Light border for clarity */
+    -fx-border-radius: 5;
+    -fx-padding: 0 10;
+    -fx-font-size: 16px; /* Increased font size for readability */
+    -fx-text-fill: #2c3e50; /* Dark text for better contrast */
+}
+
+.input-field:focused {
+    -fx-border-color: #2980b9; /* Subtle blue border on focus */
+}
+
+.continue-button {
+    -fx-background-color: #2980b9; /* Professional blue */
+    -fx-text-fill: #ffffff; /* White text for visibility */
+    -fx-font-weight: bold;
+    -fx-pref-width: 400;
+    -fx-pref-height: 45;
+    -fx-background-radius: 5;
+    -fx-font-size: 18px; /* Larger font size for readability */
+}
+
+.continue-button:hover {
+    -fx-background-color: #3498db; /* Lighter blue on hover */
+}
+
+.or-text {
+    -fx-font-size: 16px; /* Slightly larger text for clarity */
+    -fx-fill: #7f8c8d; /* Gray text for the "or" divider */
+    -fx-padding: 10 0;
+}
+
+.icon {
+    -fx-cursor: hand;
+}
+
+.hyperlink {
+    -fx-text-fill: #2980b9; /* Subtle blue for hyperlinks */
+    -fx-underline: true;
+}
+
+.account-text {
+    -fx-font-size: 16px; /* Slightly larger text for better readability */
+    -fx-fill: #2c3e50;
+    -fx-padding: 10 0 0 0;
+}
+
+.terms-text {
+    -fx-font-size: 14px; /* Smaller text for terms */
+    -fx-fill: #bdc3c7; /* Light gray for terms text */
+    -fx-padding: 10 0 0 0;
+    -fx-text-alignment: center;
+}
+
+.choice-box {
+    -fx-pref-width: 400;
+    -fx-pref-height: 40;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ccd0d5;
+    -fx-border-radius: 5;
+}
+
+.label-text {
+    -fx-font-size: 16px; /* Larger label text */
+    -fx-fill: #2c3e50; /* Dark text for contrast */
+    -fx-padding: 5 0 0 10;
+    -fx-font-weight: bold;
+}
