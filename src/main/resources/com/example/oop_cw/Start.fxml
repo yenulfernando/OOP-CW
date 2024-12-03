@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="550.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_cw.StartController" stylesheets="@css/start.css">
+<AnchorPane prefHeight="550.0" prefWidth="663.0" stylesheets="@css/start.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_cw.StartController">
 
      <!-- Title -->
      <Text fx:id="title" layoutX="89.0" layoutY="40.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="EchoFeed - News Recommendation System" />
@@ -29,4 +29,5 @@
        <image>
            <Image url="@key.png" />
        </image></ImageView>
+   <Button fx:id="signupButton1" layoutX="472.0" layoutY="49.0" onAction="#onAdminButtonClick" prefHeight="50.0" prefWidth="184.0" style="-fx-font-size: 14px;" text="Access To Admin Page" />
 </AnchorPane>

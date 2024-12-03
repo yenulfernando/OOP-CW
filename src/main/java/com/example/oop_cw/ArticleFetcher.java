@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 public class ArticleFetcher {
     private static final String API_KEY = "80b4f6d7cedf46759f825424f7a240a2";
-    private static final String API_URL = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=";
+    private static final String API_URL = "https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=";
 
     // Method to fetch articles from the API
     public static String fetchArticles() {
@@ -63,7 +63,7 @@ public class ArticleFetcher {
                 // Extract relevant fields
                 String title = article.optString("title");
                 String content = article.optString("description"); // or "content"
-                String category = "Technology"; // Default category (you can modify this logic)
+                String category = "AI"; // Default category (you can modify this logic)
                 String imageUrl = article.optString("urlToImage");
 
                 // Set values in the PreparedStatement

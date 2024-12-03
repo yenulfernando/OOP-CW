@@ -48,6 +48,11 @@
             <artifactId>json</artifactId>
             <version>20210307</version>
         </dependency>
+        <dependency>
+            <groupId>nz.ac.waikato.cms.weka</groupId>
+            <artifactId>isolationForest</artifactId>
+            <version>1.0.2</version>
+        </dependency>
     </dependencies>
 
     <build>
