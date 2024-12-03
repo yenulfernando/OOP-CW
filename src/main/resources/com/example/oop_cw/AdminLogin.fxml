@@ -1,0 +1,61 @@
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="463.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_cw.AdminLoginController">
+    <children>
+        <AnchorPane prefHeight="57.0" prefWidth="688.0" style="-fx-background-color: #D2691E;">
+            <children>
+                <Label layoutX="110.0" layoutY="14.0" text="#This page only for admin..." textFill="WHITE">
+                    <font>
+                        <Font name="Cambria Bold" size="24.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="53.0" fitWidth="58.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@management.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <Label layoutX="55.0" layoutY="142.0" prefHeight="39.0" prefWidth="98.0" text=" Username ">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="55.0" layoutY="222.0" prefHeight="39.0" prefWidth="98.0" text=" Password ">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <TextField fx:id="usernametext" layoutX="184.0" layoutY="149.0" prefHeight="30.0" prefWidth="361.0" promptText="username" />
+        <PasswordField fx:id="passwordtext" layoutX="184.0" layoutY="229.0" prefHeight="30.0" prefWidth="362.0" promptText="password" />
+        <ImageView fitHeight="30.0" fitWidth="39.0" layoutX="146.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@user.png" />
+            </image></ImageView>
+        <ImageView fitHeight="30.0" fitWidth="39.0" layoutX="146.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@password.png" />
+            </image></ImageView>
+        <Button layoutX="439.0" layoutY="305.0" mnemonicParsing="false" onAction="#onLoginbuttonclick" prefHeight="30.0" prefWidth="58.0" text="Login">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <Button layoutX="339.0" layoutY="305.0" mnemonicParsing="false" onAction="#onBackbuttonclick" prefHeight="30.0" prefWidth="58.0" text="Back">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <Label fx:id="emptylabel" layoutX="218.0" layoutY="82.0" prefHeight="16.0" prefWidth="290.0" />
+        <Line endX="14.70001220703125" endY="-56.871055603027344" layoutX="55.0" layoutY="109.0" startX="14.700004577636719" startY="-108.99999237060547" strokeWidth="9.0" />
+    </children>
+</AnchorPane>
+
