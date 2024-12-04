@@ -15,7 +15,7 @@ public class AdminMenuController {
 
     @FXML
     protected void onDUbuttonclick(ActionEvent event) throws IOException {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(""));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("DeleteUser.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -26,7 +26,7 @@ public class AdminMenuController {
     }
     @FXML
     protected void onDAbuttonclick(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(""));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("DeleteArticle.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);

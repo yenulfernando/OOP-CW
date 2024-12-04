@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="576.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop_cw.DeleteArticleController">
+
+    <!-- Title Section -->
+    <Label layoutX="38.0" layoutY="14.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Delete Articles" />
+
+    <!-- TableView Section -->
+    <VBox layoutX="20.0" layoutY="60.0" spacing="10.0">
+        <TableView fx:id="articleTable" prefHeight="417.0" prefWidth="805.0">
+            <columns>
+                <TableColumn fx:id="colArticleId" prefWidth="80.0" text="Article ID" />
+                <TableColumn fx:id="colTitle" prefWidth="189.59996032714844" text="Title" />
+                <TableColumn fx:id="colCategory" prefWidth="115.20001220703125" text="Category" />
+                <TableColumn fx:id="colContent" prefWidth="240.800048828125" text="Content" />
+                <TableColumn fx:id="colImageUrl" prefWidth="178.4000244140625" text="Image URL" />
+            </columns>
+        </TableView>
+
+        <!-- Message Label for Confirmation -->
+        <Label fx:id="confirmationLabel" style="-fx-text-fill: green;" text="" visible="false" />
+    </VBox>
+
+    <!-- Delete Button Section -->
+    <HBox alignment="CENTER" layoutX="250.0" layoutY="370.0" spacing="10.0" />
+     <Button fx:id="deleteButton" layoutX="318.0" layoutY="514.0" style="-fx-background-color: #FF4C4C; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20 10 20;" text="Delete Selected Article" />
+
+</AnchorPane>
