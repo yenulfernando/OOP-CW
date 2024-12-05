@@ -24,11 +24,6 @@
                 </ImageView>
             </children>
         </AnchorPane>
-        <ImageView fitHeight="32.0" fitWidth="23.0" layoutX="14.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@list.png" />
-            </image>
-        </ImageView>
         <Label layoutX="45.0" layoutY="99.0" prefHeight="30.0" prefWidth="59.0" text="Menu">
             <font>
                 <Font name="System Bold" size="18.0" />
@@ -58,21 +53,11 @@
                 </ImageView>
             </children>
         </AnchorPane>
-        <Label layoutX="171.0" layoutY="92.0" prefHeight="46.0" prefWidth="514.0" text="  ***Before Going To RS &amp; GP, Confirm That UPD And APD Are Done***">
-            <font>
-                <Font name="System Bold" size="15.0" />
-            </font>
-        </Label>
         <Button layoutX="59.0" layoutY="161.0" mnemonicParsing="false" onAction="#onADDbuttonclick" prefHeight="92.0" prefWidth="107.0" style="-fx-background-color: #D2691E;" text="ADD">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Button>
-        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="97.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@dice.png" />
-            </image>
-        </ImageView>
         <Line endX="91.80001068115234" endY="-7.0" layoutX="-16.0" layoutY="168.0" startX="74.99999237060547" startY="12.0" strokeWidth="2.0" />
         <Line endX="-59.400001525878906" endY="-37.0" layoutX="144.0" layoutY="198.0" startX="-85.00000762939453" startY="-9.199981689453125" strokeWidth="2.0" />
         <Label layoutX="39.0" layoutY="253.0" text="add articles to the system">

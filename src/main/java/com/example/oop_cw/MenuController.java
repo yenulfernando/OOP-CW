@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,20 +24,25 @@ public class MenuController {
     @FXML
     private Label categoryLabel;
     @FXML
-    private Button previousButton;
-    @FXML
-    private Button nextButton;
+    private Button NextButton;
     @FXML
     private Button readMoreButton;
+    @FXML
+    private Button SkipButton;
 
     private final List<Article> articles = new ArrayList<>();
     private int currentIndex = 0; // Tracks the current article index
     private String categoryFilter = ""; // Category filter for articles
+    private String loggedInUserId; // To store the logged-in user ID
 
     @FXML
     public void initialize() {
         loadArticles();
         displayCurrentArticle();
+    }
+
+    public void setLoggedInUserId(String userId) {
+        this.loggedInUserId = userId;
     }
 
     public void setCategoryFilter(String categoryFilter) {
@@ -83,33 +89,27 @@ public class MenuController {
             contentLabel.setText("");
             categoryLabel.setText("");
             articleImage.setImage(new Image(getClass().getResource("/placeholder.png").toExternalForm()));
-            previousButton.setDisable(true);
-            nextButton.setDisable(true);
+            NextButton.setDisable(true);
             readMoreButton.setDisable(true);
+            SkipButton.setDisable(true);
         } else {
             Article currentArticle = articles.get(currentIndex);
             titleLabel.setText(currentArticle.getTitle());
             categoryLabel.setText(currentArticle.getCategory());
             articleImage.setImage(currentArticle.getImage());
-            contentLabel.setText("Click 'Read More' to view content.");
+            contentLabel.setText("If you like this article, click 'Read More' to view content. Otherwise, skip the article.");
             contentLabel.setStyle("-fx-font-style: italic; -fx-text-fill: gray;");
+
+            // Enable Read More and Skip buttons for the current article
+            readMoreButton.setDisable(false);
+            SkipButton.setDisable(false);
 
             updateButtonStates();
         }
     }
 
     private void updateButtonStates() {
-        previousButton.setDisable(currentIndex == 0);
-        nextButton.setDisable(currentIndex == articles.size() - 1);
-        readMoreButton.setDisable(articles.isEmpty());
-    }
-
-    @FXML
-    private void onPreviousButtonClicked() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            displayCurrentArticle();
-        }
+        NextButton.setDisable(currentIndex == articles.size() - 1);
     }
 
     @FXML
@@ -117,6 +117,9 @@ public class MenuController {
         if (currentIndex < articles.size() - 1) {
             currentIndex++;
             displayCurrentArticle();
+        } else {
+            // Disable Next button if no more articles are available
+            NextButton.setDisable(true);
         }
     }
 
@@ -126,26 +129,68 @@ public class MenuController {
         Article currentArticle = articles.get(currentIndex);
         contentLabel.setText(currentArticle.getContent());
         contentLabel.setStyle("-fx-font-style: normal; -fx-text-fill: black;");
-        readMoreButton.setDisable(true); // Disable the button after the content is shown
+
+        // Disable both Read More and Skip buttons after Read More is clicked
+        readMoreButton.setDisable(true);
+        SkipButton.setDisable(true);
+
+        // Save the article to the user history table
+        if (loggedInUserId != null && !loggedInUserId.isEmpty()) {
+            saveArticleToHistory(currentArticle);
+        }
+    }
+
+    @FXML
+    private void onSkipButtonClick() {
+        // Disable Read More button after Skip is clicked
+        readMoreButton.setDisable(true);
+
+        // Move to the next article automatically
+        if (currentIndex < articles.size() - 1) {
+            currentIndex++;
+            displayCurrentArticle();
+        } else {
+            // If no more articles are left, indicate the end of the list
+            titleLabel.setText("No more articles to display");
+            contentLabel.setText("");
+            categoryLabel.setText("");
+            articleImage.setImage(new Image(getClass().getResource("/placeholder.png").toExternalForm()));
+            NextButton.setDisable(true);
+            readMoreButton.setDisable(true);
+            SkipButton.setDisable(true);
+        }
+    }
+
+    private void saveArticleToHistory(Article article) {
+        try (Connection connection = DatabaseConnection.getConnection()) {
+            String insertQuery = "INSERT INTO user_history (user_id, article_id, category, read_at) VALUES (?, ?, ?, NOW())";
+            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+            preparedStatement.setInt(1, Integer.parseInt(loggedInUserId)); // Logged-in user ID
+            preparedStatement.setInt(2, article.getArticleId()); // Selected article ID
+            preparedStatement.setString(3, article.getCategory());
+
+            preparedStatement.executeUpdate();
+            System.out.println("Article saved to user history for User ID: " + loggedInUserId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static class Article {
-        private final int articleId; // Added field for article_id
+        private final int articleId;
         private final String title;
         private final String content;
         private final String category;
         private final Image image;
 
         public Article(int articleId, String title, String content, String category, String imageUrl) {
-            this.articleId = articleId; // Initialize the new field
+            this.articleId = articleId;
             this.title = title;
             this.content = content;
             this.category = category;
-            if (imageUrl == null || imageUrl.trim().isEmpty()) {
-                this.image = new Image(MenuController.class.getResource("/placeholder.png").toExternalForm());
-            } else {
-                this.image = new Image(imageUrl, true);
-            }
+            this.image = imageUrl == null || imageUrl.trim().isEmpty()
+                    ? new Image(MenuController.class.getResource("/placeholder.png").toExternalForm())
+                    : new Image(imageUrl, true);
         }
 
         public int getArticleId() {

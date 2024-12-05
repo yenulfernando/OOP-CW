@@ -12,11 +12,11 @@
     <ImageView fx:id="articleImage" fitHeight="200" fitWidth="200" />
     <Label fx:id="titleLabel" prefHeight="118.0" prefWidth="732.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" textAlignment="JUSTIFY" />
     <Label fx:id="contentLabel" prefHeight="194.0" prefWidth="732.0" textAlignment="JUSTIFY" wrapText="true" />
-     <Button fx:id="readMoreButton" onAction="#onReadMoreButtonClicked" text="Read More" />
-   <AnchorPane prefHeight="0.0" prefWidth="339.0">
-      <children>
-           <Button fx:id="nextButton" layoutX="653.0" layoutY="3.0" onAction="#onNextButtonClicked" prefHeight="26.0" prefWidth="78.0" text="&gt;&gt;Next" textAlignment="CENTER" />
-           <Button fx:id="previousButton" layoutY="3.0" onAction="#onPreviousButtonClicked" prefHeight="26.0" prefWidth="78.0" text="Previous&lt;&lt;" textAlignment="CENTER" />
-      </children>
-   </AnchorPane>
+    <Button fx:id="readMoreButton" onAction="#onReadMoreButtonClicked" text="Read More" />
+    <Button fx:id="SkipButton" mnemonicParsing="false" onAction="#onSkipButtonClick" prefHeight="27.0" prefWidth="74.0" text="Skip" />
+    <AnchorPane prefHeight="0.0" prefWidth="339.0">
+        <children>
+            <Button fx:id="NextButton" layoutX="653.0" layoutY="3.0" onAction="#onNextButtonClicked" prefHeight="26.0" prefWidth="78.0" text="&gt;&gt;Next" textAlignment="CENTER" />
+        </children>
+    </AnchorPane>
 </VBox>

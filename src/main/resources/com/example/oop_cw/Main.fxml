@@ -33,17 +33,16 @@
     <VBox layoutX="200.0" layoutY="280.0" spacing="10" />
 
     <!-- Exit Button -->
-    <Button layoutX="540.0" layoutY="10.0" onAction="#handleExitAction" text="Exit" />
+    <Button layoutX="540.0" layoutY="14.0" onAction="#handleExitAction" text="Exit" />
      <Button fx:id="btnHealth" layoutX="161.0" layoutY="110.0" onAction="#handleCategoryAction" text="Health" />
      <Button fx:id="btnSports" layoutX="286.0" layoutY="110.0" onAction="#handleCategoryAction" text="Sports" />
      <Button fx:id="btnPolitics" layoutX="416.0" layoutY="110.0" onAction="#handleCategoryAction" text="Politics" />
      <Button fx:id="btnAI" layoutX="540.0" layoutY="110.0" onAction="#handleCategoryAction" text="AI" />
      <Button fx:id="btnTechnology" layoutX="12.0" layoutY="110.0" onAction="#handleCategoryAction" text="Technology" />
-     <Button fx:id="btnUserHistory" layoutX="420.0" layoutY="238.0" onAction="#handleUserHistoryAction" text="See Your History" />
-     <Button fx:id="btnMostLike" layoutX="420.0" layoutY="283.0" onAction="#handleMostLikeAction" text="See What You Most Like" />
-   <ImageView fitHeight="178.0" fitWidth="182.0" layoutX="14.0" layoutY="179.0">
+     <Button fx:id="btnMostLike" layoutX="420.0" layoutY="283.0" onAction="#handleMostLikeAction" text="See What's Recommend For You" />
+   <ImageView fitHeight="243.0" fitWidth="308.0" layoutY="159.0">
       <image>
-         <Image url="@key.png" />
+         <Image url="@pexels-ibrahimboran-3582392.jpg" />
       </image>
    </ImageView>
 </AnchorPane>

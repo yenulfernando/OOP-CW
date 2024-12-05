@@ -11,11 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class LoginController {
 
@@ -25,9 +21,8 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
-    private Connection connection;
+    private String loggedInUserId; // To store the logged-in user ID
 
-    // Method to handle login validation when the "Login" button is clicked
     @FXML
     protected void OnLoginClick(ActionEvent event) throws IOException {
         String username = usernameField.getText().trim();
@@ -36,67 +31,48 @@ public class LoginController {
         String URL = "jdbc:mysql://localhost:3306/echofeed";
         String USERNAME = "root";
 
-        // Check if fields are empty
+        // Validation: Ensure username and password are not empty
         if (username.isEmpty() || password.isEmpty()) {
             showAlert("Validation Error", "Both username and password are required.", Alert.AlertType.ERROR);
             return;
         }
 
-        try {
-            // Load MySQL JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            // Establish database connection
-            connection = DriverManager.getConnection(URL, USERNAME, "");
-
-            // SQL query to check if the username and password exist
-            String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-
+        try (Connection connection = DriverManager.getConnection(URL, USERNAME, "")) {
+            // SQL query to verify login credentials
+            String sql = "SELECT user_id FROM users WHERE username = ? AND password = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, username);
                 preparedStatement.setString(2, password);
 
-                // Execute query
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if (resultSet.next()) {
-                        // Username and password match
+                        // Retrieve user ID upon successful login
+                        loggedInUserId = resultSet.getString("user_id");
                         showAlert("Login Successful", "Welcome, " + username + "!", Alert.AlertType.INFORMATION);
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Main.fxml"));
+
+                        // Load Main.fxml after login
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/oop_cw/Main.fxml"));
                         Parent root = loader.load();
+
+                        // Pass the logged-in user ID to the MainController
+                        MainController mainController = loader.getController();
+                        mainController.setLoggedInUserId(loggedInUserId);
+
                         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
                         Scene scene = new Scene(root);
                         stage.setScene(scene);
                         stage.show();
                     } else {
-                        // No match found
                         showAlert("Login Failed", "Incorrect username or password.", Alert.AlertType.ERROR);
                     }
                 }
-            } catch (SQLException e) {
-                System.out.println("Error: Unable to execute the query.");
-                e.printStackTrace();
             }
-        } catch (ClassNotFoundException e) {
-            System.out.println("JDBC Driver not found.");
-            e.printStackTrace();
         } catch (SQLException e) {
-            System.out.println("Error: Unable to connect to the database.");
             e.printStackTrace();
-        } finally {
-            // Close the database connection
-            try {
-                if (connection != null && !connection.isClosed()) {
-                    connection.close();
-                    System.out.println("Database connection closed.");
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
+            showAlert("Database Error", "An error occurred while connecting to the database.", Alert.AlertType.ERROR);
         }
     }
 
-    // Helper method to show alert messages
     private void showAlert(String title, String message, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -107,12 +83,12 @@ public class LoginController {
 
     @FXML
     protected void onBackbuttonclick(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Start.fxml"));
+        // Go back to the start screen
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/oop_cw/Start.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-
 }

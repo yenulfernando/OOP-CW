@@ -7,6 +7,7 @@ module com.example.oop_cw {
     requires weka.dev;
 
 
+
     opens com.example.oop_cw to javafx.fxml;
     exports com.example.oop_cw;
 }
